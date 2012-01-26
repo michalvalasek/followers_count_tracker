@@ -12,7 +12,7 @@ f_usernames = File.open('usernames.txt')
 
 processed_usernames = 0
 
-f_usernames.each { |line|
+f_usernames.each do |line|
   
   username = line.match(/^[a-zA-Z_]*/).to_s
   next if username.empty? # skip line if incorrect username
@@ -34,10 +34,11 @@ f_usernames.each { |line|
   end
   
   user_file.close
-}
+end
+
 f_usernames.close
 
 end_message = "Usernames processed: #{processed_usernames}"
 puts end_message
 
-Growl.notify "Twitter Followers History\n#{end_message}"
+Growl.notify end_message, title: "Followers Count Tracker"
